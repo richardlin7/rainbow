@@ -25,40 +25,47 @@ class App extends React.Component {
               listStyleType: "none",
             }}
           >
-            <Palette0
+            <Palette
               index={this.state.index}
+              pIndex={(this.state.pIndex = 0)}
               color="red"
-              _handler0={this._handler0}
+              _handler={this._handler0}
             />
-            <Palette1
+            <Palette
               index={this.state.index}
+              pIndex={(this.state.pIndex = 1)}
               color="orange"
-              _handler1={this._handler1}
+              _handler={this._handler1}
             />
-            <Palette2
+            <Palette
               index={this.state.index}
+              pIndex={(this.state.pIndex = 2)}
               color="yellow"
-              _handler2={this._handler2}
+              _handler={this._handler2}
             />
-            <Palette3
+            <Palette
               index={this.state.index}
+              pIndex={(this.state.pIndex = 3)}
               color="green"
-              _handler3={this._handler3}
+              _handler={this._handler3}
             />
-            <Palette4
+            <Palette
               index={this.state.index}
+              pIndex={(this.state.pIndex = 4)}
               color="blue"
-              _handler4={this._handler4}
+              _handler={this._handler4}
             />
-            <Palette5
+            <Palette
               index={this.state.index}
+              pIndex={(this.state.pIndex = 5)}
               color="indigo"
-              _handler5={this._handler5}
+              _handler={this._handler5}
             />
-            <Palette6
+            <Palette
               index={this.state.index}
+              pIndex={(this.state.pIndex = 6)}
               color="violet"
-              _handler6={this._handler6}
+              _handler={this._handler6}
             />
           </ul>
         </div>
@@ -88,8 +95,10 @@ class App extends React.Component {
       "indigo",
       "violet",
     ];
+
     this.state = {
       index: 0,
+      pIndex: 0,
     };
 
     this._onClickPrevious = this._onClickPrevious.bind(this);
@@ -113,42 +122,45 @@ class App extends React.Component {
   }
 
   _handler0() {
+    console.log("setting red");
     this.setState({
       index: (this.state.index = 0),
     });
   }
 
   _handler1() {
+    console.log("setting orange");
     this.setState({
       index: (this.state.index = 1),
     });
   }
 
   _handler2() {
+    console.log("setting yellow");
     this.setState({
       index: (this.state.index = 2),
     });
   }
-
   _handler3() {
+    console.log("setting green");
     this.setState({
       index: (this.state.index = 3),
     });
   }
-
   _handler4() {
+    console.log("setting blue");
     this.setState({
       index: (this.state.index = 4),
     });
   }
-
   _handler5() {
+    console.log("setting indigo");
     this.setState({
       index: (this.state.index = 5),
     });
   }
-
   _handler6() {
+    console.log("setting violet");
     this.setState({
       index: (this.state.index = 6),
     });
@@ -157,125 +169,17 @@ class App extends React.Component {
 
 export default App;
 
-class Palette0 extends React.Component {
+class Palette extends React.Component {
   render() {
     return (
       <div>
         <li
-          onClick={this.props._handler0}
+          onClick={this.props._handler}
           style={{
             height: 250,
             width: 100,
             backgroundColor: this.props.color,
-            border: this.props.index === 0 && "1px solid black",
-          }}
-        ></li>
-      </div>
-    );
-  }
-}
-
-class Palette1 extends React.Component {
-  render() {
-    return (
-      <div>
-        <li
-          onClick={this.props._handler1}
-          style={{
-            height: 250,
-            width: 100,
-            backgroundColor: this.props.color,
-            border: this.props.index === 1 && "1px solid black",
-          }}
-        ></li>
-      </div>
-    );
-  }
-}
-
-class Palette2 extends React.Component {
-  render() {
-    return (
-      <div>
-        <li
-          onClick={this.props._handler2}
-          style={{
-            height: 250,
-            width: 100,
-            backgroundColor: this.props.color,
-            border: this.props.index === 2 && "1px solid black",
-          }}
-        ></li>
-      </div>
-    );
-  }
-}
-
-class Palette3 extends React.Component {
-  render() {
-    return (
-      <div>
-        <li
-          onClick={this.props._handler3}
-          style={{
-            height: 250,
-            width: 100,
-            backgroundColor: this.props.color,
-            border: this.props.index === 3 && "1px solid black",
-          }}
-        ></li>
-      </div>
-    );
-  }
-}
-
-class Palette4 extends React.Component {
-  render() {
-    return (
-      <div>
-        <li
-          onClick={this.props._handler4}
-          style={{
-            height: 250,
-            width: 100,
-            backgroundColor: this.props.color,
-            border: this.props.index === 4 && "1px solid black",
-          }}
-        ></li>
-      </div>
-    );
-  }
-}
-
-class Palette5 extends React.Component {
-  render() {
-    return (
-      <div>
-        <li
-          onClick={this.props._handler5}
-          style={{
-            height: 250,
-            width: 100,
-            backgroundColor: this.props.color,
-            border: this.props.index === 5 && "1px solid black",
-          }}
-        ></li>
-      </div>
-    );
-  }
-}
-
-class Palette6 extends React.Component {
-  render() {
-    return (
-      <div>
-        <li
-          onClick={this.props._handler6}
-          style={{
-            height: 250,
-            width: 100,
-            backgroundColor: this.props.color,
-            border: this.props.index === 6 && "1px solid black",
+            border: this.props.pIndex === this.props.index && "1px solid black",
           }}
         ></li>
       </div>
