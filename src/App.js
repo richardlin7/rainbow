@@ -27,45 +27,9 @@ class App extends React.Component {
           >
             <Palette
               index={this.state.index}
-              pIndex={(this.state.pIndex = 0)}
+              pIndex={0} // never set this.state directly
               color="red"
-              _handler={this._handler0}
-            />
-            <Palette
-              index={this.state.index}
-              pIndex={(this.state.pIndex = 1)}
-              color="orange"
-              _handler={this._handler1}
-            />
-            <Palette
-              index={this.state.index}
-              pIndex={(this.state.pIndex = 2)}
-              color="yellow"
-              _handler={this._handler2}
-            />
-            <Palette
-              index={this.state.index}
-              pIndex={(this.state.pIndex = 3)}
-              color="green"
-              _handler={this._handler3}
-            />
-            <Palette
-              index={this.state.index}
-              pIndex={(this.state.pIndex = 4)}
-              color="blue"
-              _handler={this._handler4}
-            />
-            <Palette
-              index={this.state.index}
-              pIndex={(this.state.pIndex = 5)}
-              color="indigo"
-              _handler={this._handler5}
-            />
-            <Palette
-              index={this.state.index}
-              pIndex={(this.state.pIndex = 6)}
-              color="violet"
-              _handler={this._handler6}
+              _handler={(e) => this._handler("red")}
             />
           </ul>
         </div>
@@ -104,13 +68,7 @@ class App extends React.Component {
     this._onClickPrevious = this._onClickPrevious.bind(this);
     this._onClickNext = this._onClickNext.bind(this);
 
-    this._handler0 = this._handler0.bind(this);
-    this._handler1 = this._handler1.bind(this);
-    this._handler2 = this._handler2.bind(this);
-    this._handler3 = this._handler3.bind(this);
-    this._handler4 = this._handler4.bind(this);
-    this._handler5 = this._handler5.bind(this);
-    this._handler6 = this._handler6.bind(this);
+    this._handler = this._handler.bind(this);
   }
 
   _onClickPrevious() {
@@ -121,49 +79,13 @@ class App extends React.Component {
     this.setState({ index: this.state.index === 6 ? 6 : this.state.index + 1 });
   }
 
-  _handler0() {
-    console.log("setting red");
-    this.setState({
-      index: (this.state.index = 0),
-    });
-  }
-
-  _handler1() {
-    console.log("setting orange");
-    this.setState({
-      index: (this.state.index = 1),
-    });
-  }
-
-  _handler2() {
-    console.log("setting yellow");
-    this.setState({
-      index: (this.state.index = 2),
-    });
-  }
-  _handler3() {
-    console.log("setting green");
-    this.setState({
-      index: (this.state.index = 3),
-    });
-  }
-  _handler4() {
-    console.log("setting blue");
-    this.setState({
-      index: (this.state.index = 4),
-    });
-  }
-  _handler5() {
-    console.log("setting indigo");
-    this.setState({
-      index: (this.state.index = 5),
-    });
-  }
-  _handler6() {
-    console.log("setting violet");
-    this.setState({
-      index: (this.state.index = 6),
-    });
+  _handler(e) {
+    if (e === "red") {
+      console.log(e);
+      this.setState({
+        index: (this.state.index = 0),
+      });
+    }
   }
 }
 
