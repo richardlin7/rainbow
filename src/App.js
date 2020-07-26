@@ -1,9 +1,5 @@
 import React from "react";
 
-//get one palette component working (red in this case)
-//get the pallet to be able to detect click
-//the duplicate components... or not
-
 class App extends React.Component {
   render() {
     return (
@@ -25,12 +21,17 @@ class App extends React.Component {
               listStyleType: "none",
             }}
           >
-            <Palette
-              index={this.state.index}
-              pIndex={0} // never set this.state directly
-              color="red"
-              _handler={(e) => this._handler("red")}
-            />
+            {this.state._colors.map((c, i) => {
+              return (
+                <Palette
+                  key={i}
+                  index={this.state.index}
+                  pIndex={this.state._colors.indexOf(c)}
+                  color={c}
+                  _handler={() => this._handler(c)}
+                />
+              );
+            })}
           </ul>
         </div>
         <div>
@@ -59,15 +60,15 @@ class App extends React.Component {
       "indigo",
       "violet",
     ];
-
+    this.num = [0, 1, 2, 3, 4, 5, 6];
     this.state = {
       index: 0,
       pIndex: 0,
+      _colors: ["red", "orange", "yellow", "green", "blue", "indigo", "violet"],
     };
 
     this._onClickPrevious = this._onClickPrevious.bind(this);
     this._onClickNext = this._onClickNext.bind(this);
-
     this._handler = this._handler.bind(this);
   }
 
@@ -81,9 +82,39 @@ class App extends React.Component {
 
   _handler(e) {
     if (e === "red") {
-      console.log(e);
+      console.log("red");
       this.setState({
-        index: (this.state.index = 0),
+        index: 0,
+      });
+    }
+    if (e === "orange") {
+      this.setState({
+        index: 1,
+      });
+    }
+    if (e === "yellow") {
+      this.setState({
+        index: 2,
+      });
+    }
+    if (e === "green") {
+      this.setState({
+        index: 3,
+      });
+    }
+    if (e === "blue") {
+      this.setState({
+        index: 4,
+      });
+    }
+    if (e === "indigo") {
+      this.setState({
+        index: 5,
+      });
+    }
+    if (e === "violet") {
+      this.setState({
+        index: 6,
       });
     }
   }
@@ -101,7 +132,7 @@ class Palette extends React.Component {
             height: 250,
             width: 100,
             backgroundColor: this.props.color,
-            border: this.props.pIndex === this.props.index && "1px solid black",
+            border: this.props.index === this.props.pIndex && "1px solid black",
           }}
         ></li>
       </div>
